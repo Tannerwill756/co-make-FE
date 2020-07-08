@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### TO-DO LIST
 
-## Available Scripts
 
-In the project directory, you can run:
+# Authentication
+    - add private routes to everything except login and register
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Up-vote
+    - get upvote functionality working
+        - redux-persist needs to update when deleting like_Id from initial state
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# NavBar
+    - create a hamburger menu to display all nav items
 
-### `yarn test`
+# Logout
+    - create logout functionality, should push you back to the main landing page
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+# BACKEND
+    - change register to include all profile information, not just username and password
+    - give the user a token once they register so they dont need to login after they register
+    - send username when logging in
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Register
+    - once backed is updated, change register form to include name, age, etc..
+    - store token & user_id to local storage and push user to /issues
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Profile
+    - profile page where the user can view all of the posts that they have posted
+    - ??? display some of the users info
+    - ??? have an option to edit some of their information
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Issues
+    - add a username next to that person's post so we know who posted
+    - make username clickable to view persons profile
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    - EDIT ISSUE
+        - change how the edit button redirect the user to the edit form
+        - add functionality to edit your post
+        - make it so you can only see button when its your post
+        - have a useEffect to auto populate the form with its post
+        - change the text field to be bigger for description
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    - DELETE ISSUE
+        - add functionality to delete your post
+        - make it so you can only see button when its your post

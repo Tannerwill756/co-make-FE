@@ -5,7 +5,6 @@ import { TextField, Button } from '@material-ui/core';
 import * as yup from 'yup';
 
 
-import {loginAction} from '../store/actions/actions';
 
 const MyTextField = ({placeholder, type, ...props}) => {
     const [field, meta] = useField(props);
@@ -16,41 +15,41 @@ const MyTextField = ({placeholder, type, ...props}) => {
 }
 
 const validationSchema = yup.object({
-    username: yup.string().required(),
-    password: yup.string().required(),
+    title: yup.string().required(),
+    description: yup.string().required(),
 })  
 
-const Login = (props) => {
+const EditIssue = (props) => {
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Edit issue</h2>
             <Formik
                 validateOnChange={true}
-                initialValues={{username:"", password:""}}
+                initialValues={{title:"", description:""}}
                 validationSchema={validationSchema}
                 onSubmit={(data, {setSubmitting}) => {
-                    setSubmitting(true);
-                    props.loginAction(data)
-                    setSubmitting(false);
+                    // setSubmitting(true);
+                    // props.loginAction(data)
+                    // setSubmitting(false);
                     
                 }}
             >{({ values, errors, isSubmitting}) => (
                 <Form >
                     <MyTextField 
-                        placeholder="Username"
-                        name="username"
+                        placeholder="title"
+                        name="title"
                         type="input"
                         
                     />
                     <br/>
                     <MyTextField 
-                        placeholder="Password"
-                        name="password"
-                        type="password"
+                        placeholder="description"
+                        name="description"
+                        type="input"
                     />
                     
                     <br/>
-                    <Button type="submit">Login</Button>
+                    <Button type="submit">Confirm Edit</Button>
                 </Form>
             )}</Formik>
             <div>
@@ -70,5 +69,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {loginAction}
-)(Login);
+    {}
+)(EditIssue);

@@ -71,7 +71,9 @@ const Register = (props) => {
 
 
 const mapStateToProps = state => {
-    return{}
+    return{
+        username: state.mainReducer.username
+    }
 }
 
 export default connect(
