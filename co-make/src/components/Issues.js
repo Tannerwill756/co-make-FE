@@ -1,35 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import {connect} from 'react-redux';
-import {getAllIssues} from '../store/actions/actions';
-import Issue from './Issue';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getAllIssues } from "../store/actions/actions";
+import Issue from "./Issue";
 
 const Issues = (props) => {
-    const getIssues = props.getAllIssues;
+  const getIssues = props.getAllIssues;
 
+  useEffect(() => {
+    getIssues();
+  }, [getIssues]);
 
+  const fullArr = [];
+  props.issues.map((issue) => {
+    fullArr.push(issue);
+  });
+  fullArr.sort(function (a, b) {
+    return b.upVotes - a.upVotes;
+  });
 
-    useEffect(()=>{
-        getIssues();
-    }, [])
-
-
-    return (
-        <div>
-            {props.issues.map((issue)=> (
-                <div key={issue.id}>
-                    <Issue issue={issue} />
-                </div>
-            ))}
+  return (
+    <div>
+      {fullArr.map((issue) => (
+        <div key={issue.id}>
+          <Issue issue={issue} />
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
-    issues: state.mainReducer.issues
+    issues: state.mainReducer.issues,
   };
 };
 
 export default connect(mapStateToProps, {
-  getAllIssues
+  getAllIssues,
 })(Issues);

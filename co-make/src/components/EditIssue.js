@@ -4,6 +4,9 @@ import { Formik, Form, useField } from "formik";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 
+import { editPost } from "../store/actions/actions";
+import { useParams, useHistory } from "react-router-dom";
+
 const MyTextField = ({ placeholder, type, ...props }) => {
   const [field, meta] = useField(props);
   const errorText = meta.error && meta.touched ? meta.error : "";
@@ -40,6 +43,8 @@ const validationSchema = yup.object({
 });
 
 const EditIssue = (props) => {
+  const { id } = useParams();
+  const { push } = useHistory();
   return (
     <div>
       <h2>Edit issue</h2>
@@ -48,9 +53,14 @@ const EditIssue = (props) => {
         initialValues={{ title: "", description: "" }}
         validationSchema={validationSchema}
         onSubmit={(data, { setSubmitting }) => {
-          // setSubmitting(true);
-          // props.loginAction(data)
-          // setSubmitting(false);
+          data = {
+            user_id: Number(localStorage.getItem("user_id")),
+            title: data.title,
+            description: data.description,
+            upVotes: 0,
+          };
+          props.editPost(id, data);
+          push("/issues");
         }}
       >
         {({ values, errors, isSubmitting }) => (
@@ -79,4 +89,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(EditIssue);
+export default connect(mapStateToProps, { editPost })(EditIssue);

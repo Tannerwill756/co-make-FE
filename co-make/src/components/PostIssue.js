@@ -56,6 +56,7 @@ const PostIssue = (props) => {
             user_id: Number(localStorage.getItem("user_id")),
             title: data.title,
             description: data.description,
+            upVotes: 0,
           };
           console.log("data being sent from form", data);
           props.createIssue(data);

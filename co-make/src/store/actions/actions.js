@@ -60,7 +60,6 @@ export const getAllIssues = () => {
     return axiosWithAuth()
       .get("/api/issues")
       .then((res) => {
-        console.log("issues payload!!!", res.data);
         dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
       })
       .catch((err) => {
@@ -73,6 +72,14 @@ export const addLike = (issue_id) => {
   console.log("action issue id:", issue_id);
   return (dispatch) => {
     dispatch({ type: ADD_LIKE, payload: issue_id });
+    return axiosWithAuth()
+      .get("/api/issues")
+      .then((res) => {
+        dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        console.log("failed to retrieve issues:", err);
+      });
   };
 };
 
@@ -80,6 +87,14 @@ export const removeLike = (issue_id) => {
   console.log("REMOVE issue id:", issue_id);
   return (dispatch) => {
     dispatch({ type: REMOVE_LIKE, payload: issue_id });
+    return axiosWithAuth()
+      .get("/api/issues")
+      .then((res) => {
+        dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        console.log("failed to retrieve issues:", err);
+      });
   };
 };
 
@@ -89,11 +104,55 @@ export const createIssue = (newPost) => {
     return axiosWithAuth()
       .post("/api/issues", newPost)
       .then((res) => {
-        console.log("post Succesful", res.data);
-        // dispatch({ type: CREATE_ISSUE_SUCCESS, payload: res.data });
+        return axiosWithAuth()
+          .get("/api/issues")
+          .then((res) => {
+            dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
+          })
+          .catch((err) => {
+            console.log("failed to retrieve issues:", err);
+          });
       })
       .catch((err) => {
         console.log("failed to post issue:", err);
       });
+  };
+};
+
+export const deleteIssue = (postId) => {
+  return (dispatch) => {
+    // dispatch({ type: DELETE_POST_START })
+    return axiosWithAuth()
+      .delete(`/api/issues/${postId}`)
+      .then((res) => {
+        return axiosWithAuth()
+          .get("/api/issues")
+          .then((res) => {
+            dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
+          })
+          .catch((err) => {
+            console.log("failed to retrieve issues:", err);
+          });
+      })
+      .catch((err) => {});
+  };
+};
+
+export const editPost = (postId, updatedPost) => {
+  return (dispatch) => {
+    // dispatch({ type: DELETE_POST_START })
+    return axiosWithAuth()
+      .put(`/api/issues/${postId}`, updatedPost)
+      .then((res) => {
+        return axiosWithAuth()
+          .get("/api/issues")
+          .then((res) => {
+            dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
+          })
+          .catch((err) => {
+            console.log("failed to retrieve issues:", err);
+          });
+      })
+      .catch((err) => {});
   };
 };
