@@ -5,6 +5,8 @@ export const FETCH_LOGIN_START = "FETCH_LOGIN_START";
 export const FETCH_LOGIN_SUCCESS = "FETCH_LOGIN_SUCCESS";
 export const FETCH_LOGIN_FAIL = "FETCH_LOGIN_FAIL";
 
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+
 export const FETCH_REGISTER_START = "FETCH_REGISTER_START";
 export const FETCH_REGISTER_SUCCESS = "FETCH_REGISTER_SUCCESS";
 
@@ -16,6 +18,9 @@ export const REMOVE_LIKE = "REMOVE_LIKE";
 
 export const CREATE_ISSUE_START = "CREATE_ISSUES_START";
 export const CREATE_ISSUE_SUCCESS = "CREATE_ISSUES_SUCCESS";
+
+export const FETCH_PROFILE_START = "FETCH_PROFILE_START";
+export const FETCH_PROFILE_SUCCESS = "FETCH_PROFILE_SUCCESS";
 
 export const loginAction = (info) => {
   return (dispatch) => {
@@ -32,6 +37,12 @@ export const loginAction = (info) => {
       .catch((err) => {
         dispatch({ type: FETCH_LOGIN_FAIL, payload: "Invalid Credentials" });
       });
+  };
+};
+
+export const logoutAction = () => {
+  return (dispatch) => {
+    dispatch({ type: LOGOUT_SUCCESS });
   };
 };
 
@@ -154,5 +165,20 @@ export const editPost = (postId, updatedPost) => {
           });
       })
       .catch((err) => {});
+  };
+};
+
+export const getProfile = (id) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_PROFILE_START });
+    return axiosWithAuth()
+      .get(`/api/users/${id}`)
+      .then((res) => {
+        dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
+        console.log("profile info!!!", res.data);
+      })
+      .catch((err) => {
+        console.log("profile error", err);
+      });
   };
 };

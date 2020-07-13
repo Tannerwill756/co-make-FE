@@ -8,6 +8,8 @@ import {
   FETCH_REGISTER_START,
   CREATE_ISSUE_START,
   CREATE_ISSUE_SUCCESS,
+  LOGOUT_SUCCESS,
+  FETCH_PROFILE_SUCCESS,
 } from "../actions/actions";
 
 const initialState = {
@@ -17,6 +19,10 @@ const initialState = {
   isFetching: false,
   error: "",
   signedIn: false,
+  currentProfile: {
+    userInfo: {},
+    userPosts: [],
+  },
 };
 
 export const mainReducer = (state = initialState, action) => {
@@ -42,6 +48,11 @@ export const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        signedIn: false,
       };
     case FETCH_ISSUES_SUCCESS:
       return {
@@ -70,6 +81,13 @@ export const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         issues: [...state.issues, action.payload],
+      };
+    case FETCH_PROFILE_SUCCESS:
+      return {
+        ...state,
+        ...state.currentProfile,
+        userInfo: action.payload.userInfo,
+        userPosts: action.payload.userPosts,
       };
 
     default:

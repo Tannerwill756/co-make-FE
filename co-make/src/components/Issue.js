@@ -64,7 +64,9 @@ const Issue = (props) => {
   return (
     <div>
       {props.isFetching ? <h2>... Loading</h2> : null}
-      <p>{props.issue.username}</p>
+      <p onClick={() => push(`/profile/${props.issue.user_id}`)}>
+        {props.issue.username}
+      </p>
       <h3>{props.issue.title}</h3>
       <p>{props.issue.description}</p>
       {/* {upVoteLogic ? <button onClick={() => downVote(props.issue)}>down Vote</button> : <button onClick={() => upVote(props.issue)}>↑ Upvote: </button>} */}

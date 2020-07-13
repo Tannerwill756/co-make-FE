@@ -1,29 +1,56 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { logoutAction } from "../store/actions/actions";
 
 const NavBar = (props) => {
+  function handleLogout() {
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("username");
+    localStorage.removeItem("persist:root");
+    localStorage.removeItem("token");
+    props.logoutAction();
+  }
+  return (
+    <div className="navLinks">
+      {props.signedIn ? <p>Welcome, {props.username}</p> : ""}
+      {props.signedIn ? null : (
+        <Link className="link" to="/register">
+          {" "}
+          Register{" "}
+        </Link>
+      )}
+      {props.signedIn ? (
+        <Link className="link" to="/login" onClick={() => handleLogout()}>
+          {" "}
+          logout
+        </Link>
+      ) : (
+        <Link className="link" to="/login">
+          {" "}
+          Login
+        </Link>
+      )}
+      {props.signedIn ? (
+        <Link className="link" to="/issueform">
+          New Issue
+        </Link>
+      ) : null}
+      {props.signedIn ? (
+        <Link className="link" to="/issues">
+          Home
+        </Link>
+      ) : null}
+    </div>
+  );
+};
 
-    return(
-        <div className="navLinks">
-            {(props.signedIn) ? <p>Welcome, {props.username}</p> : ""}
-            {(props.signedIn) ? null : <Link className="link" to="/register"> Register </Link>}
-            {(props.signedIn) ? <Link className="link" to=""> logout</Link> : <Link className="link" to="/login"> Login</Link>}
-            {(props.signedIn) ? <Link className="link" to="/issueform">New Issue</Link> : null}
-            {(props.signedIn) ? <Link className="link" to="/issues">Home</Link> : null}
-        </div>
-    )
-}
+const mapStateToProps = (state) => {
+  return {
+    username: state.mainReducer.username,
+    signedIn: state.mainReducer.signedIn,
+  };
+};
 
-
-const mapStateToProps = state => {
-    return{
-        username: state.mainReducer.username,
-        signedIn: state.mainReducer.signedIn
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    {}
-)(NavBar);
+export default connect(mapStateToProps, { logoutAction })(NavBar);
