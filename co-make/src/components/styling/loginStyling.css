@@ -1,0 +1,45 @@
+.mainL {
+  height: 730px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("../../images/loginbgimg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.inner {
+  background-color: white;
+  padding: 2%;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.inner h2 {
+  font-size: 3rem;
+}
+
+.form {
+  padding: 5%;
+}
+
+.form Button {
+  padding: 10% 20%;
+  font-size: 1.5rem;
+}
+
+.form .txtfield {
+  width: 100%;
+  height: 40px;
+  margin: 5% 0;
+  font-size: 15px;
+}
+
+.form .txtfield ::placeholder {
+  font-size: 2rem;
+}

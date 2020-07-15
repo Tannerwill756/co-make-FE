@@ -50,16 +50,16 @@ const Issue = (props) => {
       });
   };
 
-  // const upVoteLogic=()=>{
-  //     props.likes.filter(num => {
-  //         if (num === props.issue.id){
-  //             return true
-  //         }else{
-  //             return false
-  //         }
-  //     })
-  //     return
-  // }
+  const upVoteLogic = (postId) => {
+    props.likes.map((someId) => {
+      if (postId === someId) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    // return true;
+  };
 
   return (
     <div>
@@ -69,8 +69,6 @@ const Issue = (props) => {
       </p>
       <h3>{props.issue.title}</h3>
       <p>{props.issue.description}</p>
-      {/* {upVoteLogic ? <button onClick={() => downVote(props.issue)}>down Vote</button> : <button onClick={() => upVote(props.issue)}>↑ Upvote: </button>} */}
-      {/* <button onClick={() => downVote(props.issue)}>down Vote</button> */}
       <button onClick={() => upVote(props.issue)}>↑ Upvote: </button>
       <button onClick={() => downVote(props.issue)}>down Vote</button>
       <span>{props.issue.upVotes}</span>
@@ -90,9 +88,9 @@ const Issue = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  // console.log("checking state if updated", state.mainReducer.likes);
+  console.log("checking state if updated", state.likesReducer);
   return {
-    likes: state.mainReducer.likes,
+    likes: state.likesReducer.likes,
     isFetching: state.mainReducer.isFetching,
   };
 };

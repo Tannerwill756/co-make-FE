@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProfilePosts = (props) => {
-  console.log("Profileposts!!!!", props.userPosts);
   return (
     <div>
       {props.userPosts.map((posts) => {

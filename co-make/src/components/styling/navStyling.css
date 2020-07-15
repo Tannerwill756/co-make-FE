@@ -1,0 +1,24 @@
+div .navLinks {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2% 10%;
+}
+
+div .logo {
+  width: 10%;
+}
+
+div nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+}
+
+div nav a {
+  color: #676e7a;
+  font-size: 2.4rem;
+}
