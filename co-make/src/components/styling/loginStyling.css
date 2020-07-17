@@ -29,7 +29,7 @@
 }
 
 .form Button {
-  padding: 10% 20%;
+  padding: 5% 20%;
   font-size: 1.5rem;
 }
 
@@ -42,4 +42,8 @@
 
 .form .txtfield ::placeholder {
   font-size: 2rem;
+}
+
+.MuiFormControl-root .Mui-error {
+  font-size: 1.3rem;
 }

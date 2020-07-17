@@ -9,9 +9,16 @@ import "./styling/loginStyling.css";
 
 import { loginAction } from "../store/actions/actions";
 
+const useStyles = makeStyles({
+  resize: {
+    fontSize: 20,
+  },
+});
+
 const MyTextField = ({ placeholder, type, ...props }) => {
   const [field, meta] = useField(props);
   const errorText = meta.error && meta.touched ? meta.error : "";
+  const classes = useStyles();
   return (
     <TextField
       placeholder={placeholder}
@@ -20,6 +27,11 @@ const MyTextField = ({ placeholder, type, ...props }) => {
       helperText={errorText}
       error={!!errorText}
       className="txtfield"
+      InputProps={{
+        classes: {
+          input: classes.resize,
+        },
+      }}
     />
   );
 };
@@ -38,13 +50,11 @@ const Login = (props) => {
           validateOnChange={true}
           initialValues={{ username: "", password: "" }}
           validationSchema={validationSchema}
-          onSubmit={(data, { setSubmitting }) => {
-            setSubmitting(true);
+          onSubmit={(data) => {
             props.loginAction(data);
-            setSubmitting(false);
           }}
         >
-          {({ values, errors, isSubmitting }) => (
+          {() => (
             <Form className="form">
               <MyTextField
                 placeholder="Username"
@@ -66,6 +76,9 @@ const Login = (props) => {
           )}
         </Formik>
         <div>{props.error}</div>
+        <p>
+          Dont have an account yet? <a href="/register">Register</a>
+        </p>
       </div>
     </div>
   );

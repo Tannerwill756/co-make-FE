@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Formik, Form, useField } from "formik";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
+import "./styling/registerStyling.css";
 
 import { registerAction } from "../store/actions/actions";
 
@@ -37,67 +38,81 @@ const validationSchema = yup.object({
 
 const Register = (props) => {
   return (
-    <div>
-      <h2>Create your account</h2>
-      <Formik
-        validateOnChange={true}
-        initialValues={{
-          username: "",
-          password: "",
-          confirmPassword: "",
-          email: "",
-          firstName: "",
-          lastName: "",
-          age: "",
-        }}
-        validationSchema={validationSchema}
-        onSubmit={(data, { setSubmitting }) => {
-          setSubmitting(true);
-          data = {
-            username: data.username,
-            password: data.password,
-            email: data.email,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            age: Number(data.age),
-          };
-          console.log("submit:", data);
-          props.registerAction(data);
-          setSubmitting(false);
-        }}
-      >
-        {({ values, errors, isSubmitting }) => (
-          <Form>
-            <MyTextField placeholder="Username" name="username" type="input" />
-            <br />
-            <MyTextField
-              placeholder="Password"
-              name="password"
-              type="password"
-            />
-            <br />
-            <MyTextField
-              placeholder="Confirm Password"
-              name="confirmPassword"
-              type="password"
-            />
-            <br />
-            <MyTextField placeholder="Email" name="email" type="input" />
-            <br />
-            <MyTextField
-              placeholder="First Name"
-              name="firstName"
-              type="input"
-            />
-            <br />
-            <MyTextField placeholder="Last Name" name="lastName" type="input" />
-            <br />
-            <MyTextField placeholder="Age" name="age" type="input" />
-            <br />
-            <Button type="submit">Register</Button>
-          </Form>
-        )}
-      </Formik>
+    <div className="main">
+      <div className="right">
+        <h2>Create your account</h2>
+        <Formik
+          validateOnChange={true}
+          initialValues={{
+            username: "",
+            password: "",
+            confirmPassword: "",
+            email: "",
+            firstName: "",
+            lastName: "",
+            age: "",
+          }}
+          validationSchema={validationSchema}
+          onSubmit={(data, { setSubmitting }) => {
+            setSubmitting(true);
+            data = {
+              username: data.username,
+              password: data.password,
+              email: data.email,
+              firstName: data.firstName,
+              lastName: data.lastName,
+              age: Number(data.age),
+            };
+            console.log("submit:", data);
+            props.registerAction(data);
+            setSubmitting(false);
+          }}
+        >
+          {({ values, errors, isSubmitting }) => (
+            <Form>
+              <MyTextField
+                placeholder="Username"
+                name="username"
+                type="input"
+              />
+              <br />
+              <MyTextField
+                placeholder="Password"
+                name="password"
+                type="password"
+              />
+              <br />
+              <MyTextField
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                type="password"
+              />
+              <br />
+              <MyTextField placeholder="Email" name="email" type="input" />
+              <br />
+              <MyTextField
+                placeholder="First Name"
+                name="firstName"
+                type="input"
+              />
+              <br />
+              <MyTextField
+                placeholder="Last Name"
+                name="lastName"
+                type="input"
+              />
+              <br />
+              <MyTextField placeholder="Age" name="age" type="input" />
+              <br />
+              <Button type="submit">Register</Button>
+            </Form>
+          )}
+        </Formik>
+      </div>
+      <div className="left">
+        <h3>Already have an account?</h3>
+        <button>Login Here</button>
+      </div>
     </div>
   );
 };

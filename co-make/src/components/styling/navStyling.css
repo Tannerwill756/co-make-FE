@@ -3,7 +3,7 @@ div .navLinks {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2% 10%;
+  padding: 0.5% 10%;
 }
 
 div .logo {

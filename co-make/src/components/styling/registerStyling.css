@@ -1,0 +1,8 @@
+.main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  border: 3px solid red;
+  width: 60%;
+  margin: 0 auto;
+}
