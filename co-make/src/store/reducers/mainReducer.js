@@ -36,6 +36,7 @@ export const mainReducer = (state = initialState, action) => {
         ...state,
         username: action.payload.data.username,
         isFetching: false,
+        signedIn: true,
       };
     case FETCH_LOGIN_SUCCESS:
       return {

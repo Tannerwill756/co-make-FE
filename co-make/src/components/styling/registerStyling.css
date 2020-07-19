@@ -1,8 +1,51 @@
+.bg {
+  width: 100%;
+  height: 770px;
+  background-color: lightgray;
+  /* background-image: url("../../images/registerbg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
 .main {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-evenly;
-  border: 3px solid red;
+  border: 3px solid lightgray;
   width: 60%;
+  height: 600px;
   margin: 0 auto;
+  background-color: white;
+}
+
+.left {
+  margin: auto 0;
+  padding: 3%;
+}
+.left Button {
+  font-size: 1.2rem;
+  margin-top: 5%;
+  padding: 4% 10%;
+  background-color: #00b246;
+}
+
+.right {
+  margin: 2% 0;
+  width: 500px;
+}
+
+.right h2 {
+  padding-top: 2%;
+}
+
+.form .txtfield {
+  width: 90%;
+  margin: 5% 0;
+  height: 10px;
+}
+
+.right .form Button {
+  margin-top: 3%;
+  padding: 5% 20%;
+  font-size: 1.5rem;
 }

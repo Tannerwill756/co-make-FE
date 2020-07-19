@@ -1,0 +1,53 @@
+.parent {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.iss {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 1% 0;
+}
+
+.infoVotes {
+  display: flex;
+}
+
+.info {
+  border: 1px solid green;
+  text-align: left;
+  width: 90%;
+}
+.info h3 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.user {
+  border: 1px solid black;
+  width: 100px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.votes {
+  margin: 0 auto;
+  border: 1px solid pink;
+}
+
+.votes .upArr {
+  width: auto;
+  cursor: pointer;
+  height: 30px;
+}
+.votes .dwnArr {
+  width: auto;
+  cursor: pointer;
+  height: 30px;
+}
+
+.votes span {
+  font-size: 2rem;
+}

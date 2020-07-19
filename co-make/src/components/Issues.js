@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getAllIssues } from "../store/actions/actions";
 import Issue from "./Issue";
+import "./styling/issueStyling.css";
 
 const Issues = (props) => {
   const getIssues = props.getAllIssues;
@@ -19,7 +20,7 @@ const Issues = (props) => {
   });
 
   return (
-    <div>
+    <div className="parent">
       {fullArr.map((issue) => (
         <div key={issue.id}>
           <Issue issue={issue} />
