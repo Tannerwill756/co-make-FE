@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getProfile } from "../../store/actions/actions";
 import ProfilePosts from "./ProfilePosts";
 import ProfileInfo from "./ProfileInfo";
+import "../styling/profileStyling.css";
 
 const Profile = (props) => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const Profile = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="parentProfile">
       <ProfileInfo userInfo={props.userInfo} />
       <ProfilePosts userPosts={props.userPosts} />
     </div>

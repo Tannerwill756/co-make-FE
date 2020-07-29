@@ -4,12 +4,20 @@ import { Formik, Form, useField } from "formik";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
-
+import { makeStyles } from "@material-ui/core/styles";
+import "./styling/postIssue.css";
 import { createIssue } from "../store/actions/actions";
+
+const useStyles = makeStyles({
+  resize: {
+    fontSize: 15,
+  },
+});
 
 const MyTextField = ({ placeholder, type, ...props }) => {
   const [field, meta] = useField(props);
   const errorText = meta.error && meta.touched ? meta.error : "";
+  const classes = useStyles();
   return (
     <TextField
       placeholder={placeholder}
@@ -17,6 +25,12 @@ const MyTextField = ({ placeholder, type, ...props }) => {
       {...field}
       helperText={errorText}
       error={!!errorText}
+      className="txtfield"
+      InputProps={{
+        classes: {
+          input: classes.resize,
+        },
+      }}
     />
   );
 };
@@ -24,6 +38,7 @@ const MyTextField = ({ placeholder, type, ...props }) => {
 const DescripTextField = ({ placeholder, type, ...props }) => {
   const [field, meta] = useField(props);
   const errorText = meta.error && meta.touched ? meta.error : "";
+  const classes = useStyles();
   return (
     <TextField
       placeholder={placeholder}
@@ -33,19 +48,25 @@ const DescripTextField = ({ placeholder, type, ...props }) => {
       error={!!errorText}
       multiline
       rows={5}
+      className="descfield"
+      InputProps={{
+        classes: {
+          input: classes.resize,
+        },
+      }}
     />
   );
 };
 
 const validationSchema = yup.object({
-  title: yup.string().required(),
-  description: yup.string().required(),
+  title: yup.string().required().max(255),
+  description: yup.string().required().max(255),
 });
 
 const PostIssue = (props) => {
   const { push } = useHistory();
   return (
-    <div>
+    <div className="mainDiv">
       <h2>Describe your issue here</h2>
       <Formik
         validateOnChange={true}
@@ -74,7 +95,9 @@ const PostIssue = (props) => {
             />
 
             <br />
-            <Button type="submit">Submit your Issue</Button>
+            <Button className="submitB" type="submit">
+              Submit your Issue
+            </Button>
           </Form>
         )}
       </Formik>

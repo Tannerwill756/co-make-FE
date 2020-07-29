@@ -21,7 +21,7 @@ const NavBar = (props) => {
         </a>
       </div>
       <nav>
-        {props.signedIn ? <p>Welcome, {props.username}</p> : ""}
+        {props.signedIn ? <p>Hello, {props.username}</p> : ""}
         {props.signedIn ? null : (
           <Link className="link" to="/register">
             {" "}

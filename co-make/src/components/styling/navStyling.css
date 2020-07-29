@@ -18,6 +18,11 @@ div nav {
   width: 30%;
 }
 
+nav p {
+  color: black;
+  font-size: 2.4rem;
+}
+
 div nav a {
   color: #676e7a;
   font-size: 2.4rem;

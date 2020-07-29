@@ -1,0 +1,14 @@
+.parentProfile {
+  display: flex;
+  border: 1px solid green;
+}
+
+.profileInfo {
+  border: 1px solid red;
+  width: 30%;
+}
+
+.profilePosts {
+  border: 1px solid purple;
+  width: 70%;
+}

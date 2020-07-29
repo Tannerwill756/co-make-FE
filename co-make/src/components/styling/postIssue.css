@@ -1,0 +1,35 @@
+.mainDiv {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+
+.mainDiv h2 {
+  margin-bottom: 4%;
+}
+
+Form .txtfield {
+  margin-bottom: 3%;
+  width: 90%;
+}
+
+Form .MuiInputBase-inputMultiline {
+  height: 100px;
+  resize: none;
+  padding: 0;
+  line-height: 1.5;
+}
+
+Form .descfield {
+  width: 90%;
+}
+
+Form .txtfield .makeStyles-resize-1 {
+  font-size: 20px;
+}
+
+Form .submitB {
+  margin-top: 4%;
+  font-size: 1.5rem;
+  padding: 2% 5%;
+}
