@@ -70,6 +70,7 @@ const Issue = (props) => {
 
       <div className="user">
         <p onClick={() => push(`/profile/${props.issue.user_id}`)}>
+          <i class="far fa-user"></i>
           {props.issue.username}
         </p>
       </div>
@@ -95,13 +96,16 @@ const Issue = (props) => {
         </div>
       </div>
       {props.issue.user_id === Number(localStorage.getItem("user_id")) ? (
-        <div>
-          <button onClick={() => push(`/editissue/${props.issue.id}`)}>
-            Edit
-          </button>
-          <button onClick={() => props.deleteIssue(props.issue.id)}>
-            Delete
-          </button>
+        <div className="editDelete">
+          <i
+            class="far fa-edit fa-3x"
+            onClick={() => push(`/editissue/${props.issue.id}`)}
+          ></i>
+
+          <i
+            class="fas fa-times fa-3x"
+            onClick={() => props.deleteIssue(props.issue.id)}
+          ></i>
         </div>
       ) : null}
     </div>

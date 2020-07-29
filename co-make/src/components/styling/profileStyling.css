@@ -3,10 +3,34 @@
   border: 1px solid green;
 }
 
+/* left side */
+
 .profileInfo {
   border: 1px solid red;
   width: 30%;
+  padding: 5% 0;
 }
+
+.profileInfo i {
+  margin-bottom: 5%;
+}
+
+.profileInfo h2 {
+  margin: 5% 0;
+  font-size: 1.5rem;
+}
+
+.profileInfo h2 i {
+  margin-right: 2%;
+}
+
+.innerInfo {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* right side */
 
 .profilePosts {
   border: 1px solid purple;

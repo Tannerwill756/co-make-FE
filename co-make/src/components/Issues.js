@@ -22,7 +22,7 @@ const Issues = (props) => {
   return (
     <div className="parent">
       {fullArr.map((issue) => (
-        <div key={issue.id}>
+        <div key={issue.id} className="indvIssue">
           <Issue issue={issue} />
         </div>
       ))}
