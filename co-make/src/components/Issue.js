@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
-import up from "../images/up.png";
-import down from "../images/down.png";
 import { addLike, deleteIssue, removeLike } from "../store/actions/actions";
 import "./styling/issueStyling.css";
 
@@ -24,7 +22,7 @@ const Issue = (props) => {
     axiosWithAuth()
       .put(`/api/issues/${issue.id}`, { ...newissue, upVotes: votes })
       .then((res) => {
-        props.addLike(issue.id);
+        return props.addLike(issue.id);
       });
   };
 
@@ -46,21 +44,12 @@ const Issue = (props) => {
             const index = props.likes.indexOf(num);
 
             props.likes.splice(index, 1);
-            props.removeLike(issue.id);
+            return props.removeLike(issue.id);
+          } else {
+            return null;
           }
         });
       });
-  };
-
-  const upVoteLogic = (postId) => {
-    props.likes.map((someId) => {
-      if (postId === someId) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    // return true;
   };
 
   return (

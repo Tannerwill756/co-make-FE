@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getAllIssues } from "../store/actions/actions";
 import Issue from "./Issue";
@@ -13,7 +13,7 @@ const Issues = (props) => {
 
   const fullArr = [];
   props.issues.map((issue) => {
-    fullArr.push(issue);
+    return fullArr.push(issue);
   });
   fullArr.sort(function (a, b) {
     return b.upVotes - a.upVotes;

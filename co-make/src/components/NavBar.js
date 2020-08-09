@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import logo from "../images/logo_transparent.png";
 import "./styling/navStyling.css";
 import { logoutAction } from "../store/actions/actions";
+import { Menu, Dropdown } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
 
 const NavBar = (props) => {
   function handleLogout() {
@@ -13,41 +16,71 @@ const NavBar = (props) => {
     localStorage.removeItem("token");
     props.logoutAction();
   }
+
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <a rel="noopener noreferrer" href="/issues">
+          Home
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a rel="noopener noreferrer" href="/issueform">
+          New Issue
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a
+          rel="noopener noreferrer"
+          href={`/profile/${localStorage.getItem("user_id")}`}
+        >
+          Profile
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a
+          rel="noopener noreferrer"
+          href="/login"
+          onClick={() => handleLogout()}
+        >
+          Logout
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className="navLinks">
       <div className="logo">
-        <a href="/">
+        <a href={props.signedIn ? "/issues" : "/"}>
           <img src={logo} alt="comake-logo" />
         </a>
       </div>
       <nav>
         {props.signedIn ? <p>Hello, {props.username}</p> : ""}
         {props.signedIn ? null : (
-          <Link className="link" to="/register">
-            {" "}
-            Register{" "}
-          </Link>
+          <div>
+            <Link className="link" to="/register">
+              {" "}
+              Register{" "}
+            </Link>
+
+            <Link className="link" to="/login">
+              {" "}
+              Login
+            </Link>
+          </div>
         )}
         {props.signedIn ? (
-          <Link className="link" to="/login" onClick={() => handleLogout()}>
-            {" "}
-            logout
-          </Link>
-        ) : (
-          <Link className="link" to="/login">
-            {" "}
-            Login
-          </Link>
-        )}
-        {props.signedIn ? (
-          <Link className="link" to="/issueform">
-            New Issue
-          </Link>
-        ) : null}
-        {props.signedIn ? (
-          <Link className="link" to="/issues">
-            Home
-          </Link>
+          <Dropdown overlay={menu}>
+            <a
+              className="ant-dropdown-link"
+              onClick={(e) => e.preventDefault()}
+              href="/#"
+            >
+              Menu <DownOutlined />
+            </a>
+          </Dropdown>
         ) : null}
       </nav>
     </div>
