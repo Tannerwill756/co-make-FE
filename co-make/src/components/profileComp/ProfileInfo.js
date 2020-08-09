@@ -8,12 +8,12 @@ const ProfileInfo = (props) => {
 
       <div className="innerInfo">
         <h2>
-          <i class="far fa-address-card"></i>
+          <i className="far fa-address-card"></i>
           {props.userInfo.username}
         </h2>
 
         <h2>
-          <i class="far fa-envelope"></i>
+          <i className="far fa-envelope"></i>
           {props.userInfo.email}
         </h2>
         <h2>
@@ -22,7 +22,7 @@ const ProfileInfo = (props) => {
         </h2>
 
         <h2>
-          <i class="far fa-hourglass"></i>
+          <i className="far fa-hourglass"></i>
           {props.userInfo.age} years old
         </h2>
       </div>

@@ -13,7 +13,7 @@ const Home = () => {
       <section className="main-section">
         <h1>Get involved in your community</h1>
         <h2>Make your voice heard on the issues you care about.</h2>
-        <a href="https://front-end-ten-omega.now.sh/">Sign up</a>
+        <a href="/register">Sign up</a>
       </section>
 
       <section className="failure-section">
@@ -77,7 +77,7 @@ const Home = () => {
       {/* <!-- Sign up Section starts --> */}
       <section className="sign-up-section">
         <h2>Make your voice heard on the issues you care about.</h2>
-        <a href="https://front-end-ten-omega.now.sh/">Sign up</a>
+        <a href="/register">Sign up</a>
       </section>
       {/* <!-- Sign up Section ends --> */}
     </div>

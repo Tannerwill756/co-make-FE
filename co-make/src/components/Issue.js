@@ -42,7 +42,6 @@ const Issue = (props) => {
       .put(`/api/issues/${issue.id}`, { ...newissue, upVotes: votes })
       .then((res) => {
         props.likes.map((num) => {
-          console.log("maping through", num);
           if (num === issue.id) {
             const index = props.likes.indexOf(num);
 
@@ -70,7 +69,7 @@ const Issue = (props) => {
 
       <div className="user">
         <p onClick={() => push(`/profile/${props.issue.user_id}`)}>
-          <i class="far fa-user"></i>
+          <i className="far fa-user"></i>
           {props.issue.username}
         </p>
       </div>
@@ -80,30 +79,27 @@ const Issue = (props) => {
           <p>{props.issue.description}</p>
         </div>
         <div className="votes">
-          <img
-            src={up}
-            className="upArr"
-            alt="up vote arrow"
+          <i
+            className="fas fa-arrow-up fa-3x upArr"
             onClick={() => upVote(props.issue)}
-          />
+          ></i>
           <span>{props.issue.upVotes}</span>
-          <img
-            src={down}
-            alt="down vote arrow"
-            className="dwnArr"
+
+          <i
             onClick={() => downVote(props.issue)}
-          />
+            className="fas fa-arrow-down fa-3x dwnArr"
+          ></i>
         </div>
       </div>
       {props.issue.user_id === Number(localStorage.getItem("user_id")) ? (
         <div className="editDelete">
           <i
-            class="far fa-edit fa-3x"
+            className="far fa-edit fa-3x"
             onClick={() => push(`/editissue/${props.issue.id}`)}
           ></i>
 
           <i
-            class="fas fa-times fa-3x"
+            className="fas fa-times fa-3x"
             onClick={() => props.deleteIssue(props.issue.id)}
           ></i>
         </div>

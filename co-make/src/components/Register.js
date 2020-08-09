@@ -81,7 +81,7 @@ const Register = (props) => {
                 lastName: data.lastName,
                 age: Number(data.age),
               };
-              console.log("submit:", data);
+
               props.registerAction(data);
               setSubmitting(false);
             }}

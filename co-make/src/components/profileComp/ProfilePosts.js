@@ -6,7 +6,7 @@ const ProfilePosts = (props) => {
     <div className="profilePosts">
       {props.userPosts.map((posts) => {
         return (
-          <div key={posts.id}>
+          <div key={posts.id} className="indvPost">
             <h3>{posts.title}</h3>
             <p>{posts.description}</p>
           </div>

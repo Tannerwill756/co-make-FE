@@ -22,7 +22,6 @@ const Profile = (props) => {
   );
 };
 const mapStateToProps = (state) => {
-  //   console.log(state.mainReducer.userInfo);
   return {
     userPosts: state.mainReducer.userPosts,
     userInfo: state.mainReducer.userInfo,

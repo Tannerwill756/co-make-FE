@@ -48,14 +48,21 @@ div p i {
 }
 
 .votes .upArr {
-  width: auto;
   cursor: pointer;
-  height: 30px;
+  margin-right: 5px;
 }
+
+.votes .upArr:hover {
+  color: green;
+}
+
 .votes .dwnArr {
-  width: auto;
   cursor: pointer;
-  height: 30px;
+  margin-left: 5px;
+}
+
+.votes .dwnArr:hover {
+  color: red;
 }
 
 .votes span {

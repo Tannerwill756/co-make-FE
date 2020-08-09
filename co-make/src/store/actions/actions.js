@@ -47,7 +47,6 @@ export const logoutAction = () => {
 };
 
 export const registerAction = (f) => {
-  console.log("info being sent in post:", f);
   return (dispatch) => {
     dispatch({ type: FETCH_REGISTER_START });
     return axios
@@ -80,7 +79,6 @@ export const getAllIssues = () => {
 };
 
 export const addLike = (issue_id) => {
-  console.log("action issue id:", issue_id);
   return (dispatch) => {
     dispatch({ type: ADD_LIKE, payload: issue_id });
     return axiosWithAuth()
@@ -95,7 +93,6 @@ export const addLike = (issue_id) => {
 };
 
 export const removeLike = (issue_id) => {
-  console.log("REMOVE issue id:", issue_id);
   return (dispatch) => {
     dispatch({ type: REMOVE_LIKE, payload: issue_id });
     return axiosWithAuth()
@@ -175,7 +172,7 @@ export const getProfile = (id) => {
       .get(`/api/users/${id}`)
       .then((res) => {
         dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
-        console.log("profile info!!!", res.data);
+        // console.log("profile info!!!", res.data);
       })
       .catch((err) => {
         console.log("profile error", err);
