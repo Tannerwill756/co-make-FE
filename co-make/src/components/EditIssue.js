@@ -62,7 +62,7 @@ const DescripTextField = ({ placeholder, type, ...props }) => {
 
 const validationSchema = yup.object({
   title: yup.string().required().max(255),
-  description: yup.string().required().max(255),
+  description: yup.string().required().max(1000),
 });
 
 const EditIssue = (props) => {
