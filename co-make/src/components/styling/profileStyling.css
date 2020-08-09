@@ -1,12 +1,12 @@
 .parentProfile {
   display: flex;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 /* left side */
 
 .profileInfo {
-  border: 1px solid red;
+  border-bottom: 1px solid black;
   width: 30%;
   padding: 5% 0;
 }
@@ -33,7 +33,7 @@
 /* right side */
 
 .profilePosts {
-  border: 1px solid purple;
+  border-left: 1px solid black;
   width: 70%;
   text-align: left;
   padding: 2%;
