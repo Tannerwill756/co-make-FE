@@ -172,7 +172,7 @@ export const getProfile = (id) => {
       .get(`/api/users/${id}`)
       .then((res) => {
         dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
-        // console.log("profile info!!!", res.data);
+        console.log("profile info!!! from action file", res.data);
       })
       .catch((err) => {
         console.log("profile error", err);
