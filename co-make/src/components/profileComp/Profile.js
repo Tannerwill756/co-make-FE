@@ -12,9 +12,9 @@ const Profile = (props) => {
 
   useEffect(() => {
     props.getProfile(id);
-  }, [id]);
+  }, []);
 
-  console.log("profile id from component", id);
+  // console.log("profile id from component", id);
 
   return (
     <div className="parentProfile">
