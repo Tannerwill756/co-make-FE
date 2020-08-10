@@ -12,7 +12,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     props.getProfile(id);
-  }, [id, props]);
+  }, [id]);
 
   return (
     <div className="parentProfile">
@@ -22,6 +22,7 @@ const Profile = (props) => {
   );
 };
 const mapStateToProps = (state) => {
+  // console.log("user post info!!", state.mainReducer.userPosts);
   return {
     userPosts: state.mainReducer.userPosts,
     userInfo: state.mainReducer.userInfo,
