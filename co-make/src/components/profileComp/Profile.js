@@ -14,6 +14,8 @@ const Profile = (props) => {
     props.getProfile(id);
   }, [id]);
 
+  console.log("profile id from component", id);
+
   return (
     <div className="parentProfile">
       <ProfileInfo userInfo={props.userInfo} />

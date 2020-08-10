@@ -166,6 +166,7 @@ export const editPost = (postId, updatedPost) => {
 };
 
 export const getProfile = (id) => {
+  console.log("profile id from action file", id);
   return (dispatch) => {
     dispatch({ type: FETCH_PROFILE_START });
     return axiosWithAuth()
