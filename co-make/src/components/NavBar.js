@@ -59,7 +59,7 @@ const NavBar = (props) => {
       <nav>
         {props.signedIn ? <p>Hello, {props.username}</p> : ""}
         {props.signedIn ? null : (
-          <div>
+          <div className="notSignedIn">
             <Link className="link" to="/register">
               {" "}
               Register{" "}

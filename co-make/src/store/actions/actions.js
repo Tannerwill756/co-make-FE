@@ -139,7 +139,7 @@ export const deleteIssue = (postId) => {
             dispatch({ type: FETCH_ISSUES_SUCCESS, payload: res.data });
           })
           .catch((err) => {
-            console.log("failed to retrieve issues:", err);
+            console.log("failed to delete this issues", err);
           });
       })
       .catch((err) => {});
@@ -166,14 +166,14 @@ export const editPost = (postId, updatedPost) => {
 };
 
 export const getProfile = (id) => {
-  // console.log("profile id from action file", id);
+  console.log("profile id from action file", id);
   return (dispatch) => {
     dispatch({ type: FETCH_PROFILE_START });
     return axiosWithAuth()
       .get(`/api/users/${id}`)
       .then((res) => {
         dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data });
-        // console.log("profile info!!! from action file", res.data);
+        console.log("profile info!!! from action file", res.data);
       })
       .catch((err) => {
         console.log("profile error", err);
