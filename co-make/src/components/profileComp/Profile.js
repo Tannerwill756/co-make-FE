@@ -15,15 +15,21 @@ const Profile = (props) => {
   }, [id]);
 
   return (
-    <div className="parentProfile">
-      <ProfileInfo userInfo={props.userInfo} />
-      <ProfilePosts userPosts={props.userPosts} />
+    <div>
+      {!userInfo ? (
+        <div> ...Loading </div>
+      ) : (
+        <div className="parentProfile">
+          <ProfileInfo userInfo={props.userInfo} />
+          <ProfilePosts userPosts={props.userPosts} />
+        </div>
+      )}
     </div>
   );
 };
 const mapStateToProps = (state) => {
-  // console.log("user post info!!", state.mainReducer.userPosts);
-  // console.log("user profile info!", state.mainReducer.userInfo);
+  console.log("user post info!!", state.mainReducer.userPosts);
+  console.log("user profile info!", state.mainReducer.userInfo);
   return {
     userPosts: state.mainReducer.userPosts,
     userInfo: state.mainReducer.userInfo,
