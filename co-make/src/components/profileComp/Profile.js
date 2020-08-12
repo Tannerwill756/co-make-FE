@@ -16,7 +16,7 @@ const Profile = (props) => {
 
   return (
     <div>
-      {!userInfo ? (
+      {!props.userInfo ? (
         <div> ...Loading </div>
       ) : (
         <div className="parentProfile">
