@@ -33,6 +33,7 @@ const Issues = (props) => {
 const mapStateToProps = (state) => {
   return {
     issues: state.mainReducer.issues,
+    isFetching: state.mainReducer.isFetching
   };
 };
 

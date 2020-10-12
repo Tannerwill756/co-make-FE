@@ -77,7 +77,7 @@ const Login = (props) => {
         </Formik>
         <div>{props.error}</div>
         <p>
-          Dont have an account yet? <a href="/register">Register</a>
+          Don't have an account yet? <a href="/register">Register</a>
         </p>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Formik, Form, useField } from "formik";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, CircularProgress } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import * as yup from "yup";
@@ -59,6 +59,7 @@ const Register = (props) => {
       <div className="main">
         <div className="right">
           <h2>Create your account</h2>
+          {props.isFetching ? <CircularProgress /> : "" }
           <Formik
             validateOnChange={true}
             initialValues={{
@@ -123,6 +124,7 @@ const Register = (props) => {
                 <MyTextField placeholder="Age" name="age" type="input" />
                 <br />
                 <Button type="submit">Register</Button>
+                       
               </Form>
             )}
           </Formik>
@@ -139,6 +141,7 @@ const Register = (props) => {
 const mapStateToProps = (state) => {
   return {
     username: state.mainReducer.username,
+    isFetching: state.mainReducer.isFetching
   };
 };
 
